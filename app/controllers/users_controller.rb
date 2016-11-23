@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def index
+      @users = User.all
+  end
+
   def new
     @user = User.new(user_params)
   end
@@ -10,7 +14,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[user_params])
     if @user.save
-      puts @user.name += " was created"
+
     else
       render 'new'
     end
