@@ -6,9 +6,13 @@ Rails.application.routes.draw do
 
   root 'login#index'
 
-  resources :users
-  # resources :sessions
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
-  delete '/logout',  to: 'sessions#destroy'
+  delete '/logout',  to: 'sessions#destroy's
+
+  resources :users
+
+  resources :account_activations, only: [:edit]
+
+
 end
