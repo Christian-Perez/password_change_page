@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  attr_accessor :activation_token
+
+  before_create :create_activation_digest
+
   has_secure_password
 
   before_save { self.email = email.downcase }
@@ -10,4 +14,21 @@ class User < ApplicationRecord
              uniqueness: { case_sensitive: false }
 
   validates :password, presence: true, length: { minimum: 8 }
+
+  def create_activation_digest
+    self.activation_token  = User.new_token
+    self.activation_digest = User.digest(activation_token)
+  end
+
+  private
+
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
+  def User.new_token
+    SecureRandom.urlsafe_base64
+  end
 end

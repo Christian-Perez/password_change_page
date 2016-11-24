@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update]
   before_action :correct_user,   only: [:edit, :update]
 
+
   def index
       @users = User.all
   end
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    before_create :create_activation_digest
     User.create(user_params)
     redirect_to users_path
   end
