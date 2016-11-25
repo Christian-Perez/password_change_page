@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+#TODO only first user gets created.. << fix this
+
 users = User.create([
   {name: 'Andy', email: 'chris.dillon92@gmail.com', password: 'password', activated: true, activated_at: Time.zone.now},
   {name: 'Brian', email: 'chris.dillon92@gmail.com', password: 'password', activated: true, activated_at: Time.zone.now},
