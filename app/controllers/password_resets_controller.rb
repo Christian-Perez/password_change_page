@@ -1,5 +1,5 @@
 class PasswordResetsController < ApplicationController
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   before_action :get_user,   only: [:edit, :update]
   before_action :valid_user, only: [:edit, :update]

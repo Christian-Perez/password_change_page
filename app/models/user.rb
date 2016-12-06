@@ -31,7 +31,7 @@ class User < ApplicationRecord
 
   # Sends password reset email.
   def send_password_reset_email
-    UserMailer.password_reset(self).deliver_now
+    UserMailer.password_reset(self).deliver_later #FIND_ME
   end
 
   # Returns true if a password reset has expired.
@@ -46,6 +46,11 @@ class User < ApplicationRecord
   end
 
   private
+
+  def create_activation_digest
+    self.activation_token  = User.new_token
+    self.activation_digest = User.digest(activation_token)
+  end
 
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
