@@ -12,6 +12,7 @@ gem 'bcrypt',         '3.1.11'
 # formats rails console output (Hirb.enable)
 gem 'hirb'
 #
+gem 'figaro'
 #
 
 gem 'sqlite3'
