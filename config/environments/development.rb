@@ -48,7 +48,8 @@ Rails.application.configure do
     user_name:            'insomniac.mail.koala@gmail.com',
     password:             'koala, meethanz',
     authentication:       'plain',
-    enable_starttls_auto: true}
+    enable_starttls_auto: true
+  }
   # config.action_mailer.delivery_method = :smtp
   # host = '< app name >.herokuapp.com' ### ### ###
   # config.action_mailer.default_url_options = { host: host }
